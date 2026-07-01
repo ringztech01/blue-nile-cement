@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue Nile Cement Industries — Juba, South Sudan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#1B1D19;
+    --slate:#2E322C;
+    --slate-2:#23261F;
+    --orange:#E2711D;
+    --orange-bright:#F2933F;
+    --stone:#A8A69E;
+    --paper:#F7F5F1;
+    --paper-2:#EFEBE3;
+    --ink:#24261F;
+    --ink-soft:#5B5D53;
+    --line:#DEDBD3;
+    --line-dark:#3B3E36;
+    --solar-ink:#101B22;
+    --solar-panel:#16262E;
+    --solar-gold:#E9B84B;
+    --solar-stone:#9FB2B8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    line-height:0.96;
+  }
+  .mono{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  img,svg{display:block; max-width:100%;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--orange);
+    font-weight:600;
+  }
+  ::selection{background:var(--orange); color:#fff;}
+
+  /* reveal animation */
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(27,29,25,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:14px;}
+  .brand-mark{
+    width:44px; height:44px; border-radius:6px;
+    background:linear-gradient(155deg, #232620 0%, #14150F 100%);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid #3a3d33;
+  }
+  .brand-name{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900; font-size:19px; letter-spacing:0.03em;
+    color:#F7F5F1;
+    line-height:1;
+  }
+  .brand-sub{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px; letter-spacing:0.14em; color:var(--stone);
+    margin-top:3px;
+  }
+  nav.primary{display:flex; align-items:center; gap:34px;}
+  nav.primary a{
+    font-size:13.5px; font-weight:500; color:#D8D5CB;
+    letter-spacing:0.02em;
+    padding:6px 0; border-bottom:1px solid transparent;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  nav.primary a:hover{color:#fff; border-color:var(--orange);}
+  .lang-toggle{display:flex; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--stone);}
+  .lang-toggle span{cursor:pointer;}
+  .lang-toggle span.active{color:var(--orange);}
+  .cta-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--orange); color:#1B1D19;
+    font-weight:700; font-size:13px; letter-spacing:0.03em;
+    padding:11px 20px; border-radius:3px;
+    text-transform:uppercase;
+    transition:background .2s ease, transform .2s ease;
+    border:none; cursor:pointer;
+  }
+  .cta-btn:hover{background:var(--orange-bright); transform:translateY(-1px);}
+  .cta-ghost{
+    display:inline-flex; align-items:center; gap:8px;
+    background:transparent; color:#F7F5F1;
+    font-weight:700; font-size:13px; letter-spacing:0.03em;
+    padding:11px 20px; border-radius:3px; border:1px solid #4A4D42;
+    text-transform:uppercase;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .cta-ghost:hover{border-color:var(--orange); color:var(--orange);}
+  .menu-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .menu-toggle span{width:22px; height:2px; background:#F7F5F1;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    background:var(--charcoal);
+    color:#F7F5F1;
+    overflow:hidden;
+    padding:96px 0 0;
+  }
+  .strata{
+    position:absolute; inset:0; z-index:0; opacity:0.5;
+    background:
+      repeating-linear-gradient(180deg,
+        transparent 0px, transparent 46px,
+        rgba(226,113,29,0.05) 46px, rgba(226,113,29,0.05) 48px),
+      linear-gradient(180deg, #1B1D19 0%, #201F17 40%, #2A2318 70%, #1B1D19 100%);
+  }
+  .hero-inner{position:relative; z-index:1;}
+  .hero h1{
+    font-size:clamp(40px, 6.4vw, 78px);
+    color:#F7F5F1;
+    margin:20px 0 26px;
+    max-width:900px;
+  }
+  .hero h1 em{font-style:normal; color:var(--orange);}
+  .hero p.lede{
+    font-size:17px; color:var(--stone); max-width:560px;
+    margin-bottom:38px;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-bottom:64px; flex-wrap:wrap;}
+
+  /* batch ticket stat strip */
+  .ticket-row{
+    display:grid; grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line-dark);
+  }
+  .ticket{
+    padding:28px 32px;
+    border-right:1px dashed var(--line-dark);
+    position:relative;
+  }
+  .ticket:last-child{border-right:none;}
+  .ticket-label{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px;
+    letter-spacing:0.16em; color:var(--stone); text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .ticket-value{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:800; font-size:34px; color:#F7F5F1; letter-spacing:0.01em;
+  }
+  .ticket-value span{color:var(--orange);}
+  .ticket-sub{font-size:12.5px; color:var(--stone); margin-top:6px;}
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:104px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,4vw,44px); margin-top:14px; color:var(--ink);}
+  .section-head p{color:var(--ink-soft); font-size:16px; margin-top:16px;}
+  .light-on-dark .section-head h2, .light-on-dark .section-head p{color:#F7F5F1;}
+  .light-on-dark .section-head p{color:var(--stone);}
+  .divider{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* ============ ABOUT / TIMELINE ============ */
+  .about-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:72px; align-items:start;}
+  .about-grid p{color:var(--ink-soft); margin-bottom:18px; font-size:15.5px;}
+  .about-grid p strong{color:var(--ink); font-weight:600;}
+  .timeline{border-left:2px solid var(--line);}
+  .tl-item{position:relative; padding:0 0 30px 28px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-6px; top:4px;
+    width:10px; height:10px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--orange);
+  }
+  .tl-item.future::before{background:var(--orange); border-color:var(--orange);}
+  .tl-year{font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; color:var(--orange); letter-spacing:0.05em;}
+  .tl-text{font-size:14.5px; color:var(--ink-soft); margin-top:5px;}
+  .tl-text strong{color:var(--ink);}
+
+  /* ============ PRODUCTS ============ */
+  .product-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .product-card{
+    background:var(--charcoal); border-radius:6px; overflow:hidden;
+    display:flex; flex-direction:column;
+    border:1px solid var(--line-dark);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .product-card:hover{transform:translateY(-6px); box-shadow:0 20px 40px -20px rgba(0,0,0,0.4);}
+  .product-art{height:150px; position:relative; overflow:hidden; background:var(--slate-2);}
+  .product-art .bar{position:absolute; top:0; left:0; right:0; height:5px; background:var(--orange);}
+  .product-body{padding:26px 26px 30px;}
+  .product-code{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--orange); letter-spacing:0.12em;}
+  .product-name{font-family:'Big Shoulders Display',sans-serif; font-weight:800; font-size:22px; color:#F7F5F1; margin:8px 0 12px; text-transform:none;}
+  .product-desc{font-size:13.8px; color:var(--stone); margin-bottom:20px;}
+  .spec-link{font-size:12.5px; font-weight:600; color:#F7F5F1; letter-spacing:0.02em; display:inline-flex; gap:6px; align-items:center; border-bottom:1px solid var(--orange); padding-bottom:2px;}
+
+  /* grain/aggregate texture svg pattern reused in product art */
+  .agg-pattern{position:absolute; inset:0; opacity:0.5;}
+
+  /* ============ OPERATIONS STAT GRID ============ */
+  .stat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .stat-cell{background:var(--paper); padding:34px 28px;}
+  .stat-num{font-family:'Big Shoulders Display',sans-serif; font-weight:900; font-size:44px; color:var(--ink);}
+  .stat-num span{color:var(--orange);}
+  .stat-label{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft); margin-top:8px;}
+
+  /* ============ SOLAR / ICC SECTION ============ */
+  .solar-section{
+    background:var(--solar-ink); color:#EAF2F4; position:relative; overflow:hidden;
+  }
+  .solar-section::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 700px 400px at 85% -10%, rgba(233,184,75,0.14), transparent 60%),
+      repeating-linear-gradient(100deg, rgba(233,184,75,0.035) 0px, rgba(233,184,75,0.035) 2px, transparent 2px, transparent 34px);
+    z-index:0;
+  }
+  .solar-section .wrap{position:relative; z-index:1;}
+  .solar-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(233,184,75,0.1); border:1px solid rgba(233,184,75,0.35);
+    padding:7px 14px; border-radius:100px; margin-bottom:22px;
+  }
+  .solar-badge .dot{width:6px; height:6px; border-radius:50%; background:var(--solar-gold);}
+  .solar-badge span{font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.1em; color:var(--solar-gold); text-transform:uppercase;}
+
+  .solar-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; margin-top:20px;}
+  .solar-copy p{color:var(--solar-stone); font-size:15.5px; margin-bottom:16px;}
+  .solar-copy p strong{color:#F5F8F9; font-weight:600;}
+
+  .solar-panel-art{
+    background:var(--solar-panel); border-radius:8px; border:1px solid rgba(233,184,75,0.18);
+    padding:26px; position:relative;
+  }
+  .panel-grid-svg{width:100%; height:auto; display:block; border-radius:4px; overflow:hidden;}
+
+  .capacity-tickets{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px;}
+  .capacity-ticket{
+    border:1px dashed rgba(233,184,75,0.4); border-radius:6px; padding:20px 18px;
+    background:rgba(255,255,255,0.02);
+  }
+  .capacity-ticket .cval{font-family:'Big Shoulders Display',sans-serif; font-weight:900; font-size:38px; color:var(--solar-gold);}
+  .capacity-ticket .cval sub-unit{font-size:16px;}
+  .capacity-ticket .clabel{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.1em; color:var(--solar-stone); text-transform:uppercase; margin-top:6px;}
+  .capacity-ticket .csite{font-size:12.5px; color:#C9D6D9; margin-top:10px;}
+
+  /* contract seal card */
+  .seal-card{
+    margin-top:40px;
+    background:rgba(255,255,255,0.03); border:1px solid rgba(233,184,75,0.22);
+    border-radius:8px; padding:30px 32px;
+    display:flex; align-items:center; gap:26px; flex-wrap:wrap;
+  }
+  .seal-icon{
+    width:74px; height:74px; border-radius:50%;
+    border:2px solid var(--solar-gold);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; position:relative;
+  }
+  .seal-icon svg{width:34px; height:34px;}
+  .seal-text{flex:1; min-width:220px;}
+  .seal-text .st-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.14em; color:var(--solar-gold); text-transform:uppercase;}
+  .seal-text h4{font-family:'Big Shoulders Display',sans-serif; font-weight:800; font-size:20px; color:#F5F8F9; margin-top:6px; text-transform:none;}
+  .seal-text p{font-size:13px; color:var(--solar-stone); margin-top:6px;}
+  .signature-line{margin-top:16px; display:flex; gap:24px; flex-wrap:wrap;}
+  .sig-block{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--solar-stone);}
+  .sig-block .sig-name{font-family:'Big Shoulders Display',sans-serif; font-size:16px; color:#EAF2F4; text-transform:none; font-weight:700; border-bottom:1px solid rgba(233,184,75,0.5); padding-bottom:4px; margin-bottom:4px; display:inline-block;}
+
+  /* ============ MARKETS TABLE ============ */
+  table.markets{width:100%; border-collapse:collapse;}
+  table.markets th{
+    text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px;
+    letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);
+    padding:14px 18px; border-bottom:2px solid var(--ink);
+  }
+  table.markets td{padding:18px 18px; border-bottom:1px solid var(--line); font-size:14.5px; color:var(--ink);}
+  table.markets td.use{color:var(--ink-soft);}
+  .share-bar-wrap{display:flex; align-items:center; gap:10px;}
+  .share-bar{height:6px; background:var(--line); border-radius:3px; flex:1; max-width:120px; overflow:hidden;}
+  .share-bar-fill{height:100%; background:var(--orange); border-radius:3px;}
+  .share-pct{font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:600; width:38px;}
+
+  /* ============ CONTACT ============ */
+  .contact-section{background:var(--charcoal); color:#F7F5F1;}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:48px;}
+  .contact-block h3{font-family:'Big Shoulders Display',sans-serif; font-size:16px; font-weight:800; color:var(--orange); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:18px;}
+  .contact-block p, .contact-block a{font-size:14px; color:var(--stone); margin-bottom:8px; display:block;}
+  .contact-block a:hover{color:#fff;}
+  .depot{margin-bottom:20px;}
+  .depot .dname{color:#F7F5F1; font-weight:600; font-size:14.5px;}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--slate-2); color:var(--stone); padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr repeat(4,1fr); gap:40px; margin-bottom:48px;}
+  .footer-col h5{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:#F7F5F1; margin-bottom:16px;}
+  .footer-col a, .footer-col p{display:block; font-size:13.5px; color:var(--stone); margin-bottom:9px;}
+  .footer-col a:hover{color:var(--orange);}
+  .footer-bottom{
+    border-top:1px solid var(--line-dark); padding-top:24px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:#6D6F63; letter-spacing:0.03em;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:900px){
+    nav.primary{display:none;}
+    .menu-toggle{display:flex;}
+    .about-grid, .solar-grid{grid-template-columns:1fr; gap:40px;}
+    .product-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+    .ticket-row{grid-template-columns:1fr; }
+    .ticket{border-right:none; border-bottom:1px dashed var(--line-dark);}
+    .contact-grid{grid-template-columns:1fr; gap:36px;}
+    .footer-grid{grid-template-columns:repeat(2,1fr);}
+    table.markets{font-size:12px;}
+    .capacity-tickets{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 20px;}
+    .hero{padding-top:80px;}
+    section{padding:72px 0;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M2 20L9 6L13 14L16 9L22 20H2Z" fill="#E2711D"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">BLUE NILE</div>
+        <div class="brand-sub">CEMENT INDUSTRIES · EST. 2008</div>
+      </div>
+    </div>
+    <nav class="primary">
+      <a href="#company">Company</a>
+      <a href="#products">Products</a>
+      <a href="#operations">Operations</a>
+      <a href="#power">Power</a>
+      <a href="#markets">Markets</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex; align-items:center; gap:22px;">
+      <div class="lang-toggle"><span class="active">EN</span><span>AR</span></div>
+      <a href="#contact" class="cta-btn">Request a Quote</a>
+      <button class="menu-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="strata"></div>
+  <div class="wrap hero-inner">
+    <div style="padding-bottom:80px;">
+      <div class="eyebrow reveal">Juba, Republic of South Sudan</div>
+      <h1 class="reveal">Building a <em>stronger</em><br>foundation for<br>South Sudan.</h1>
+      <p class="lede reveal">Blue Nile Cement has supplied Ordinary Portland and blended cement to builders across South Sudan since 2008 — from the first post-independence roads to today's housing, energy, and infrastructure projects.</p>
+      <div class="hero-ctas reveal">
+        <a href="#products" class="cta-btn">Our Products</a>
+        <a href="#contact" class="cta-ghost">Request a Quote</a>
+      </div>
+    </div>
+    <div class="ticket-row reveal">
+      <div class="ticket">
+        <div class="ticket-label">Workforce</div>
+        <div class="ticket-value"><span>340+</span> employees</div>
+        <div class="ticket-sub">Across three sites</div>
+      </div>
+      <div class="ticket">
+        <div class="ticket-label">Installed Capacity</div>
+        <div class="ticket-value"><span>480,000</span> t/yr</div>
+        <div class="ticket-sub">Juba–Nimule blending plant</div>
+      </div>
+      <div class="ticket">
+        <div class="ticket-label">Operating Since</div>
+        <div class="ticket-value"><span>2008</span></div>
+        <div class="ticket-sub">Headquartered in Juba</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 — Company</div>
+      <h2>About Blue Nile Cement</h2>
+    </div>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>Blue Nile Cement Industries Ltd. was founded in <strong>2008</strong> as a grinding and bagging operation outside Juba, set up to reduce South Sudan's near-total dependence on cement imported overland from Kenya, Uganda, and northern Sudan.</p>
+        <p>The company draws on limestone reserves from the <strong>Kapoeta belt</strong> in Eastern Equatoria, trucked roughly 270km to our blending and packing facility on the Juba–Nimule corridor.</p>
+        <p>What began as a single grinding line producing under 60,000 tonnes a year has grown into the country's largest domestically-based cement supplier, serving contractors, government infrastructure programmes, and retail hardware distributors across all ten states.</p>
+        <p>We remain privately held, majority South Sudanese-owned, with a regional technical partnership that supports clinker sourcing during dry-season transport disruptions — and, since 2026, our own captive solar power supply.</p>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item">
+          <div class="tl-year">2008</div>
+          <div class="tl-text">Company registered in Juba; <strong>first grinding mill</strong> commissioned with 60,000 t/yr capacity.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2012</div>
+          <div class="tl-text">Second mill line added; bagging plant automated, capacity reaches <strong>150,000 t/yr</strong>.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2016</div>
+          <div class="tl-text">Kapoeta quarry haulage agreement signed; began blending local limestone with imported clinker.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-text">Opened <strong>Wau regional depot</strong> to serve Bahr el Ghazal markets.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2024</div>
+          <div class="tl-text">Capacity expanded to <strong>480,000 t/yr</strong>; ISO-aligned quality lab commissioned.</div>
+        </div>
+        <div class="tl-item future">
+          <div class="tl-year">2026</div>
+          <div class="tl-text"><strong>115MW captive solar array</strong> commissioned with ICC to power the Juba–Nimule plant.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 — Products</div>
+      <h2>What we produce</h2>
+      <p>Our extensive range of cement products is designed to meet the demands of projects of all sizes and complexities, from residential to large-scale infrastructure.</p>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card reveal">
+        <div class="product-art">
+          <div class="bar"></div>
+          <svg class="agg-pattern" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="150" fill="#23261F"/>
+            <circle cx="30" cy="40" r="9" fill="#33362D"/><circle cx="80" cy="90" r="13" fill="#33362D"/>
+            <circle cx="140" cy="30" r="7" fill="#33362D"/><circle cx="190" cy="70" r="15" fill="#33362D"/>
+            <circle cx="250" cy="40" r="10" fill="#33362D"/><circle cx="60" cy="120" r="11" fill="#2C2F27"/>
+            <circle cx="220" cy="115" r="9" fill="#2C2F27"/><circle cx="270" cy="100" r="7" fill="#2C2F27"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-code">OPC 42.5N</div>
+          <div class="product-name">Ordinary Portland Cement</div>
+          <p class="product-desc">Our core general-construction cement, used in foundations, columns, and slab work across residential and commercial sites.</p>
+          <a href="#" class="spec-link">Specification Sheet →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-art">
+          <div class="bar"></div>
+          <svg class="agg-pattern" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="150" fill="#23261F"/>
+            <path d="M0 100 Q 75 70 150 100 T 300 100 V150 H0 Z" fill="#2C2F27"/>
+            <path d="M0 120 Q 75 100 150 120 T 300 120 V150 H0 Z" fill="#33362D"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-code">PPC 32.5R</div>
+          <div class="product-name">Pozzolana Blended Cement</div>
+          <p class="product-desc">A lower-heat, cost-efficient blend favoured for mass concrete pours, plastering, and block-making.</p>
+          <a href="#" class="spec-link">Specification Sheet →</a>
+        </div>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-art">
+          <div class="bar"></div>
+          <svg class="agg-pattern" viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="150" fill="#23261F"/>
+            <path d="M-10 90 L40 40 L90 90 L140 30 L190 90 L240 45 L300 90 L300 150 L-10 150 Z" fill="#2C2F27"/>
+          </svg>
+        </div>
+        <div class="product-body">
+          <div class="product-code">RHC 52.5N</div>
+          <div class="product-name">Rapid-Hardening Cement</div>
+          <p class="product-desc">Formulated for road, bridge, and government infrastructure work where early strength gain shortens project timelines.</p>
+          <a href="#" class="spec-link">Specification Sheet →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="operations">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 — Operations</div>
+      <h2>Production &amp; capacity</h2>
+      <p>The Juba–Nimule blending plant draws limestone from the Kapoeta belt and blends it with imported clinker across two grinding lines.</p>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-cell">
+        <div class="stat-num"><span>480k</span></div>
+        <div class="stat-label">Installed t/yr</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">71<span>%</span></div>
+        <div class="stat-label">Utilisation</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span>2</span></div>
+        <div class="stat-label">Grinding lines</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num"><span>1,800</span></div>
+        <div class="stat-label">Bags / hour packed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="power" class="solar-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--solar-gold);">04 — Power &amp; Sustainability</div>
+      <h2>Sun-powered production</h2>
+    </div>
+    <div class="solar-grid">
+      <div class="solar-copy reveal">
+        <div class="solar-badge"><span class="dot"></span><span>ICC × Blue Nile Cement</span></div>
+        <p><strong>Blue Nile Cement has partnered with ICC</strong>, our sister company and a regional solar and inverter systems integrator, to build a captive solar power system at the Juba–Nimule plant.</p>
+        <p>The installation combines a <strong>64MW</strong> array serving the main grinding and blending lines with a second <strong>51MW</strong> array dedicated to the bagging plant and site infrastructure — a combined <strong>115MW</strong> of installed solar capacity commissioned in 2026.</p>
+        <p>The system reduces reliance on diesel generation during dry-season fuel shortages and lowers the plant's per-tonne carbon footprint, supporting both production continuity and the company's long-term sustainability targets.</p>
+
+        <div class="seal-card">
+          <div class="seal-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E9B84B" stroke-width="1.6">
+              <path d="M4 13l4 4L19 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="seal-text">
+            <div class="st-label">Agreement Executed · 2026</div>
+            <h4>Solar Power Purchase &amp; Installation Agreement</h4>
+            <p>Signed between ICC and Blue Nile Cement Industries Ltd. for the design, installation, and long-term maintenance of the Juba–Nimule solar arrays.</p>
+            <div class="signature-line">
+              <div class="sig-block"><span class="sig-name">ICC Representative</span>Chief Executive Officer, ICC</div>
+              <div class="sig-block"><span class="sig-name">Blue Nile Representative</span>Managing Director, Blue Nile Cement</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="solar-panel-art">
+          <svg class="panel-grid-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="300" fill="#0F1B21"/>
+            <rect x="0" y="210" width="400" height="90" fill="#101C1A"/>
+            <g>
+              <!-- rows of panels in perspective -->
+              <g opacity="0.95">
+                <rect x="20" y="30" width="80" height="46" rx="2" fill="#1B3A44" stroke="#2E5866" stroke-width="1"/>
+                <rect x="110" y="30" width="80" height="46" rx="2" fill="#1B3A44" stroke="#2E5866" stroke-width="1"/>
+                <rect x="200" y="30" width="80" height="46" rx="2" fill="#1B3A44" stroke="#2E5866" stroke-width="1"/>
+                <rect x="290" y="30" width="90" height="46" rx="2" fill="#1B3A44" stroke="#2E5866" stroke-width="1"/>
+              </g>
+              <g opacity="0.95">
+                <rect x="20" y="86" width="80" height="46" rx="2" fill="#1E4048" stroke="#33606D" stroke-width="1"/>
+                <rect x="110" y="86" width="80" height="46" rx="2" fill="#1E4048" stroke="#33606D" stroke-width="1"/>
+                <rect x="200" y="86" width="80" height="46" rx="2" fill="#1E4048" stroke="#33606D" stroke-width="1"/>
+                <rect x="290" y="86" width="90" height="46" rx="2" fill="#1E4048" stroke="#33606D" stroke-width="1"/>
+              </g>
+              <g opacity="0.95">
+                <rect x="20" y="142" width="80" height="46" rx="2" fill="#224852" stroke="#396A78" stroke-width="1"/>
+                <rect x="110" y="142" width="80" height="46" rx="2" fill="#224852" stroke="#396A78" stroke-width="1"/>
+                <rect x="200" y="142" width="80" height="46" rx="2" fill="#224852" stroke="#396A78" stroke-width="1"/>
+                <rect x="290" y="142" width="90" height="46" rx="2" fill="#224852" stroke="#396A78" stroke-width="1"/>
+              </g>
+              <!-- grid lines within panels -->
+              <g stroke="#0F1B21" stroke-width="1" opacity="0.5">
+                <line x1="60" y1="30" x2="60" y2="188"/>
+                <line x1="150" y1="30" x2="150" y2="188"/>
+                <line x1="240" y1="30" x2="240" y2="188"/>
+                <line x1="335" y1="30" x2="335" y2="188"/>
+              </g>
+            </g>
+            <circle cx="345" cy="45" r="18" fill="#E9B84B" opacity="0.85"/>
+            <circle cx="345" cy="45" r="30" fill="#E9B84B" opacity="0.12"/>
+          </svg>
+        </div>
+        <div class="capacity-tickets">
+          <div class="capacity-ticket">
+            <div class="cval">64<span style="font-size:16px;">MW</span></div>
+            <div class="clabel">Array One</div>
+            <div class="csite">Grinding &amp; blending lines</div>
+          </div>
+          <div class="capacity-ticket">
+            <div class="cval">51<span style="font-size:16px;">MW</span></div>
+            <div class="clabel">Array Two</div>
+            <div class="csite">Bagging plant &amp; site power</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="markets">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 — Markets</div>
+      <h2>Where we sell</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="markets">
+        <thead>
+          <tr><th>Region</th><th>Primary Use</th><th>Share of Sales</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Central Equatoria (Juba metro)</td>
+            <td class="use">Housing, commercial, government infrastructure</td>
+            <td><div class="share-bar-wrap"><div class="share-bar"><div class="share-bar-fill" style="width:92%;"></div></div><span class="share-pct">46%</span></div></td>
+          </tr>
+          <tr>
+            <td>Bahr el Ghazal (Wau corridor)</td>
+            <td class="use">Roads &amp; regional housing</td>
+            <td><div class="share-bar-wrap"><div class="share-bar"><div class="share-bar-fill" style="width:36%;"></div></div><span class="share-pct">18%</span></div></td>
+          </tr>
+          <tr>
+            <td>Eastern Equatoria</td>
+            <td class="use">Quarry-adjacent local construction</td>
+            <td><div class="share-bar-wrap"><div class="share-bar"><div class="share-bar-fill" style="width:28%;"></div></div><span class="share-pct">14%</span></div></td>
+          </tr>
+          <tr>
+            <td>Upper Nile region</td>
+            <td class="use">NGO &amp; humanitarian infrastructure</td>
+            <td><div class="share-bar-wrap"><div class="share-bar"><div class="share-bar-fill" style="width:24%;"></div></div><span class="share-pct">12%</span></div></td>
+          </tr>
+          <tr>
+            <td>Cross-border (N. Uganda, W. Kenya)</td>
+            <td class="use">Opportunistic export sales</td>
+            <td><div class="share-bar-wrap"><div class="share-bar"><div class="share-bar-fill" style="width:20%;"></div></div><span class="share-pct">10%</span></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">06 — Contact</div>
+      <h2>Get in touch</h2>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-block">
+        <h3>Head Office</h3>
+        <p>Blue Nile Cement Industries Ltd.<br>Juba–Nimule Road, Industrial Area<br>P.O. Box 4471, Juba, Central Equatoria<br>Republic of South Sudan</p>
+      </div>
+      <div class="contact-block">
+        <h3>Talk to us</h3>
+        <a href="mailto:info@bluenilecement.example">General: info@bluenilecement.example</a>
+        <a href="mailto:sales@bluenilecement.example">Sales: sales@bluenilecement.example</a>
+        <a href="tel:+211912345678">HQ: +211 912 345 678</a>
+        <a href="tel:+211920876543">Sales desk: +211 920 876 543</a>
+      </div>
+      <div class="contact-block">
+        <h3>Regional Depots</h3>
+        <div class="depot">
+          <div class="dname">Wau Depot</div>
+          <p style="margin-bottom:2px;">Airport Road, Wau, Western Bahr el Ghazal</p>
+          <a href="tel:+211915223344">+211 915 223 344</a>
+        </div>
+        <div class="depot">
+          <div class="dname">Malakal Depot</div>
+          <p style="margin-bottom:2px;">River Road, Malakal, Upper Nile</p>
+          <a href="tel:+211927665544">+211 927 665 544</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="brand" style="margin-bottom:14px;">
+          <div class="brand-mark">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 20L9 6L13 14L16 9L22 20H2Z" fill="#E2711D"/></svg>
+          </div>
+          <div class="brand-name" style="font-size:16px;">BLUE NILE</div>
+        </div>
+        <p style="max-width:260px;">Blue Nile Cement Industries Ltd. has supplied cement to builders across South Sudan since 2008, from the Juba–Nimule blending plant to depots in Wau and Malakal.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <a href="#company">About Us</a>
+        <a href="#operations">Operations</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="footer-col">
+        <h5>Products</h5>
+        <a href="#products">OPC 42.5N</a>
+        <a href="#products">PPC 32.5R</a>
+        <a href="#products">RHC 52.5N</a>
+      </div>
+      <div class="footer-col">
+        <h5>Markets</h5>
+        <a href="#markets">Central Equatoria</a>
+        <a href="#markets">Bahr el Ghazal</a>
+        <a href="#markets">Upper Nile</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:info@bluenilecement.example">info@bluenilecement.example</a>
+        <a href="tel:+211912345678">+211 912 345 678</a>
+        <p>Juba, South Sudan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BLUE NILE CEMENT INDUSTRIES LTD — FICTIONAL ENTITY FOR DEMO USE ONLY</span>
+      <span>SITE BUILT WITH CLAUDE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav.primary');
+  toggle.addEventListener('click', () => {
+    if(nav.style.display === 'flex'){
+      nav.style.display = 'none';
+    } else {
+      nav.style.display = 'flex';
+      nav.style.position = 'absolute';
+      nav.style.top = '68px';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.background = '#1B1D19';
+      nav.style.flexDirection = 'column';
+      nav.style.padding = '20px 32px';
+      nav.style.gap = '16px';
+      nav.style.borderTop = '1px solid #3B3E36';
+    }
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
