@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#1e2024;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 img{display:block;max-width:100%;height:auto}
@@ -632,6 +632,16 @@ revealEls.forEach(el => observer.observe(el));
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => {
   header.classList.toggle('scrolled', window.pageYOffset > 60);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', e => {
+    const id = anchor.getAttribute('href');
+    if (id === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 </script>
 </body>
