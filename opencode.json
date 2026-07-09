@@ -8,6 +8,11 @@
       "headers": {
         "x-api-key": "{env:API_KEY_21ST}"
       }
+    },
+    "openart": {
+      "type": "remote",
+      "url": "https://mcp.openart.ai/mcp",
+      "enabled": true
     }
   }
 }
