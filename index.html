@@ -10,6 +10,21 @@
 <link rel="preload" as="image" href="images/hero-2k.jpg" fetchpriority="high">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* splash */
+#splash{position:fixed;inset:0;z-index:9999;background:#1B1D19;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+.splash-inner{text-align:center}
+.splash-mark{width:80px;height:80px;border-radius:12px;background:linear-gradient(155deg,#232620 0%,#14150F 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:1px solid #3a3d33;animation:splashPulse 2s ease-in-out infinite}
+.splash-mark svg{width:44px;height:44px}
+.splash-name{font-family:'Big Shoulders Display','Inter',sans-serif;font-weight:900;font-size:28px;letter-spacing:.04em;color:#F7F5F1;text-transform:uppercase;line-height:1}
+.splash-sub{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#A8A69E;text-transform:uppercase;margin-top:10px}
+.splash-loader{display:flex;gap:8px;justify-content:center;margin-top:32px}
+.splash-loader span{width:8px;height:8px;border-radius:50%;background:#E2711D;animation:splashBounce 1.2s ease-in-out infinite}
+.splash-loader span:nth-child(2){animation-delay:.15s}
+.splash-loader span:nth-child(3){animation-delay:.3s}
+@keyframes splashPulse{0%,100%{box-shadow:0 0 0 0 rgba(226,113,29,.15)}50%{box-shadow:0 0 0 12px rgba(226,113,29,0)}}
+@keyframes splashBounce{0%,80%,100%{transform:scale(.6);opacity:.3}40%{transform:scale(1);opacity:1}}
 html{scroll-behavior:smooth;scroll-padding-top:72px}
 body{font-family:'Inter',sans-serif;background:#f8f9fa;color:#1e2024;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
@@ -265,6 +280,18 @@ footer{background:#1e2024;border-top:none;padding:56px 0 28px}
 </style>
 </head>
 <body>
+<div id="splash">
+  <div class="splash-inner">
+    <div class="splash-mark">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+        <path d="M2 20L9 6L13 14L16 9L22 20H2Z" fill="#E2711D"/>
+      </svg>
+    </div>
+    <div class="splash-name">Upper Nile Cement</div>
+    <div class="splash-sub">Industries · Kapoeta, South Sudan</div>
+    <div class="splash-loader"><span></span><span></span><span></span></div>
+  </div>
+</div>
 
 <header id="header">
   <div class="topbar">
@@ -623,6 +650,10 @@ footer{background:#1e2024;border-top:none;padding:56px 0 28px}
 </footer>
 
 <script>
+window.addEventListener('load', () => {
+  setTimeout(() => document.getElementById('splash').classList.add('hide'), 400);
+});
+
 const revealEls = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
