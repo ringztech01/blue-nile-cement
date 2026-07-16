@@ -15,7 +15,7 @@
 #splash{position:fixed;inset:0;z-index:9999;background:#1B1D19;display:flex;align-items:center;justify-content:center;transition:opacity .5s ease,visibility .5s ease}
 #splash.hide{opacity:0;visibility:hidden;pointer-events:none}
 .splash-inner{text-align:center}
-.splash-mark{width:80px;height:80px;border-radius:12px;background:linear-gradient(155deg,#232620 0%,#14150F 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:1px solid #3a3d33;animation:splashPulse 2s ease-in-out infinite;overflow:hidden}
+.splash-mark{width:80px;height:80px;border-radius:12px;background:transparent;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:none;animation:splashPulse 2s ease-in-out infinite;overflow:hidden}
 .splash-mark img{width:60px;height:60px;object-fit:contain}
 .splash-name{font-family:'Big Shoulders Display','Inter',sans-serif;font-weight:900;font-size:28px;letter-spacing:.04em;color:#F7F5F1;text-transform:uppercase;line-height:1}
 .splash-sub{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.14em;color:#A8A69E;text-transform:uppercase;margin-top:10px}
@@ -48,7 +48,7 @@ header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,2
 header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1200px;margin:0 auto}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-icon{width:36px;height:36px;border-radius:4px;background:#e2711d;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.brand-icon{width:36px;height:36px;border-radius:4px;background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
 .brand-icon img{width:36px;height:36px;object-fit:contain}
 .brand-name{font-weight:800;font-size:17px;letter-spacing:.02em;line-height:1.2;color:#1e2024}
 .brand-name small{display:block;font-family:'DM Mono',monospace;font-size:8.5px;font-weight:400;letter-spacing:.14em;color:#8a8d95;text-transform:uppercase}
